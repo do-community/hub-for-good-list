@@ -23,38 +23,46 @@ $header: #0071fe;
 
     margin: ($margin * 3) 0 0;
 
-    .v-select {
-      &.vs--single {
-        &.vs--unsearchable {
-          flex-shrink: 0;
-          margin: 0 0 0 $margin;
+    form {
+      .input-container {
+        .v-select {
+          &.vs--single {
+            &.vs--unsearchable {
+              flex-shrink: 0;
+              margin: 0 0 0 $margin;
 
-          &.vs--open {
-            .vs__selected {
-              position: relative;
+              &.vs--open {
+                .vs__selected {
+                  position: relative;
+                }
+              }
+
+              .vs__search {
+                display: none;
+              }
+
+              .vs__dropdown-toggle {
+                background: $background;
+                border: 1px solid $input-border;
+                height: 50px;
+                padding: 0 ($margin * .25) 0 ($margin * .5);
+
+                .vs__selected {
+                  margin: ($margin * .125) 0 0;
+                  padding: 0 ($margin * .5);
+                }
+              }
+
+              .vs__dropdown-menu {
+                margin: 0 0 -100%;
+                padding: 0;
+                position: relative;
+
+                .vs__dropdown-option--highlight {
+                  background: $primary;
+                }
+              }
             }
-          }
-
-          .vs__search {
-            display: none;
-          }
-
-          .vs__dropdown-toggle {
-            background: $background;
-            border: 1px solid $input-border;
-            height: 50px;
-            padding: 0 ($margin * .25) 0 ($margin * .5);
-
-            .vs__selected {
-              margin: ($margin * .125) 0 0;
-              padding: 0 ($margin * .5);
-            }
-          }
-
-          .vs__dropdown-menu {
-            margin: 0 0 -100%;
-            padding: 0;
-            position: relative;
           }
         }
       }
@@ -75,6 +83,26 @@ $header: #0071fe;
               @include sailec-medium;
 
               color: $dark-blue;
+            }
+
+            td {
+              color: $text;
+              font-size: $font-size;
+
+              a {
+                color: $primary;
+                transition: color $transition;
+
+                &:hover,
+                &:focus {
+                  color: $dark-blue;
+                }
+              }
+
+              small {
+                color: $dark-grey;
+                font-size: .85em;
+              }
             }
           }
         }

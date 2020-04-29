@@ -40,16 +40,16 @@ limitations under the License.
                 <table class="table">
                     <thead>
                         <tr>
-                            <th>{{ i18n.templates.app.projectName }}</th>
-                            <th>{{ i18n.templates.app.projectLink }}</th>
+                            <th>{{ i18n.templates.app.projectNameLink }}</th>
                             <th>{{ i18n.templates.app.projectPurpose }}</th>
                         </tr>
                     </thead>
                     <tbody>
                         <template v-if="filtered.length">
                             <tr v-for="project in filtered" :key="project.id">
-                                <td>{{ project.name }}</td>
                                 <td>
+                                    {{ project.name }}
+                                    <br />
                                     <a :href="project.link[0].url" target="_blank" rel="noopener">
                                         {{ project.link[0].text }}
                                     </a>
@@ -81,9 +81,11 @@ limitations under the License.
     import i18n from '../i18n';
     import data from '../../build/data';
 
+    // Start linkify
     const Linkify = linkify();
     Linkify.tlds(tlds).set({ fuzzyIP: true, fuzzyEmail: false });
 
+    // Purpose categories and their names
     const purposeMap = {
         fighting_virus: 'Fights the virus',
         remote_learning: 'Enables remote learning and education',
@@ -93,6 +95,7 @@ limitations under the License.
     };
     const validPurposes = Object.keys(purposeMap);
 
+    // Parse links in project & standardise purposes
     const projectData = data.map(project => ({
         ...project,
         link: Linkify.match(project.link),
@@ -101,6 +104,7 @@ limitations under the License.
         purposeOther: !validPurposes.includes(project.purpose) && ! project.purposeOther ? project.purpose : project.purposeOther,
     })).filter(project => project.link !== null);
 
+    // Create the data for the purposes filter
     const filterPurposes = [
         { label: 'All projects', value: 'all' },
         ...validPurposes.map(purpose => ({ label: purposeMap[purpose], value: purpose })),
