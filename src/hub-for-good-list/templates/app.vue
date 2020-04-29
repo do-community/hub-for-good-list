@@ -42,7 +42,11 @@ limitations under the License.
                         <template v-if="filtered.length">
                             <tr v-for="project in filtered" :key="project.id">
                                 <td>{{ project.name }}</td>
-                                <td>{{ project.link }}</td>
+                                <td>
+                                    <a :href="project.link[0].url" target="_blank" rel="noopener">
+                                        {{ project.link[0].text }}
+                                    </a>
+                                </td>
                             </tr>
                         </template>
                         <tr v-else>
@@ -58,8 +62,16 @@ limitations under the License.
 </template>
 
 <script>
+    import linkify from 'linkify-it';
+    import tlds from 'tlds';
     import i18n from '../i18n';
     import data from '../../build/data';
+
+    const Linkify = linkify();
+    Linkify.tlds(tlds).set({ fuzzyIP: true, fuzzyEmail: false });
+
+    const projectData = data.map(project => ({ ...project, link: Linkify.match(project.link) }))
+        .filter(project => project.link !== null);
 
     export default {
         name: 'App',
@@ -71,7 +83,7 @@ limitations under the License.
         },
         computed: {
             filtered() {
-                return data.filter(this.filterProject);
+                return projectData.filter(this.filterProject);
             },
         },
         methods: {

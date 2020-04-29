@@ -39,7 +39,9 @@
     "do-bulma": "git+https://github.com/do-community/do-bulma.git",
     "do-vue": "git+https://github.com/do-community/do-vue.git",
     "google-spreadsheet": "^3.0.11",
+    "linkify-it": "^2.2.0",
     "parcel-bundler": "^1.12.4",
+    "tlds": "^1.207.0",
     "vue": "^2.6.10",
     "vue-hot-reload-api": "^2.3.3"
   },
