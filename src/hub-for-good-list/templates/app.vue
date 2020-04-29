@@ -91,7 +91,7 @@ limitations under the License.
         fighting_virus: 'Fights the virus',
         remote_learning: 'Enables remote learning and education',
         quarantined_life: 'Supports quarantined life',
-        small_businesses: 'Helps small bussinesses impacted by the virus',
+        small_businesses: 'Helps small businesses impacted by the virus',
         other: 'Other purposes',
     };
     const validPurposes = Object.keys(purposeMap);
