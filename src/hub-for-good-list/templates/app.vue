@@ -54,12 +54,7 @@ limitations under the License.
                                         {{ project.link[0].text }}
                                     </a>
                                 </td>
-                                <td>
-                                    {{ project.purposeTitle }}
-                                    <template v-if="project.purposeOther">
-                                        <br /><small>{{ project.purposeOther }}</small>
-                                    </template>
-                                </td>
+                                <td>{{ purposeMap[project.purpose] }}</td>
                             </tr>
                         </template>
                         <tr v-else>
@@ -100,8 +95,6 @@ limitations under the License.
         ...project,
         link: Linkify.match(project.link),
         purpose: validPurposes.includes(project.purpose) ? project.purpose : 'other',
-        purposeTitle: purposeMap[validPurposes.includes(project.purpose) ? project.purpose : 'other'],
-        purposeOther: !validPurposes.includes(project.purpose) && ! project.purposeOther ? project.purpose : project.purposeOther,
     })).filter(project => project.link !== null);
 
     // Create the data for the purposes filter
@@ -121,6 +114,7 @@ limitations under the License.
                 filter: '',
                 purpose: filterPurposes[0].value,
                 purposes: filterPurposes,
+                purposeMap,
             };
         },
         computed: {

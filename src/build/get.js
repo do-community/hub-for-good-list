@@ -35,7 +35,6 @@ const main = async () => {
         name: row.project_name || '',
         link: row.project_link || '',
         purpose: row.project_purpose || '',
-        purposeOther: row.project_purpose_other || '',
     }));
 
     // Export the data
