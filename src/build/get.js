@@ -31,6 +31,7 @@ const main = async () => {
 
     // Only keep the columns we need
     const sanitised = approved.map(row => ({
+        id: row.rowNumber,
         name: row.project_name || '',
         link: row.project_link || '',
         description: row.project_description || '',

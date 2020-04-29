@@ -6,7 +6,7 @@
   "scripts": {
     "build": "npm run build:clean && npm run build:template && npm run build:data && npm run build:static && npm run build:tool",
     "build:clean": "do-vue clean",
-    "build:template": "BLANK_TEMPLATE=true do-vue template",
+    "build:template": "do-vue template",
     "build:data": "node ./src/build/get.js",
     "build:static": "copyfiles --up 2 ./src/static/{*,**/*} dist",
     "build:tool": "do-vue tool src/hub-for-good-list dist",
