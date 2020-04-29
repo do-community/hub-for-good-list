@@ -34,7 +34,6 @@ const main = async () => {
         id: row.rowNumber,
         name: row.project_name || '',
         link: row.project_link || '',
-        description: row.project_description || '',
         purpose: row.project_purpose || '',
         purposeOther: row.project_purpose_other || '',
     }));
