@@ -61,14 +61,19 @@ $header: #0071fe;
       margin: 0 0 1rem;
       padding: 0;
 
-      .table {
-        border: 0;
-        min-width: 100%;
+      .table-container {
+        table {
+          &.table {
+            border: 0;
+            margin: 0;
+            min-width: 100%;
 
-        th {
-          @include sailec-medium;
+            th {
+              @include sailec-medium;
 
-          color: $dark-blue;
+              color: $dark-blue;
+            }
+          }
         }
       }
     }
