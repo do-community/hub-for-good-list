@@ -40,25 +40,31 @@ limitations under the License.
                 <table class="table">
                     <thead>
                         <tr>
-                            <th>{{ i18n.templates.app.projectNameLink }}</th>
-                            <th>{{ i18n.templates.app.projectPurpose }}</th>
+                            <th class="project">
+                                {{ i18n.templates.app.projectNameLink }}
+                            </th>
+                            <th class="purpose">
+                                {{ i18n.templates.app.projectPurpose }}
+                            </th>
                         </tr>
                     </thead>
                     <tbody>
                         <template v-if="filtered.length">
                             <tr v-for="project in filtered" :key="project.id">
-                                <td>
+                                <td class="project">
                                     {{ project.name }}
                                     <br />
                                     <a :href="project.link[0].url" target="_blank" rel="noopener">
                                         {{ project.link[0].text }}
                                     </a>
                                 </td>
-                                <td>{{ purposeMap[project.purpose] }}</td>
+                                <td class="purpose">
+                                    {{ purposeMap[project.purpose] }}
+                                </td>
                             </tr>
                         </template>
                         <tr v-else>
-                            <td colspan="3">
+                            <td colspan="2">
                                 {{ i18n.templates.app.noResults }}
                             </td>
                         </tr>
