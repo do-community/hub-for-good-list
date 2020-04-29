@@ -26,6 +26,12 @@ limitations under the License.
                        type="text"
                        :placeholder="i18n.templates.app.search"
                 />
+                <VueSelect v-model="purpose"
+                           :options="purposes"
+                           :reduce="purp => purp.value"
+                           :clearable="false"
+                           :searchable="false"
+                />
             </div>
         </form>
 
@@ -36,6 +42,7 @@ limitations under the License.
                         <tr>
                             <th>{{ i18n.templates.app.projectName }}</th>
                             <th>{{ i18n.templates.app.projectLink }}</th>
+                            <th>{{ i18n.templates.app.projectPurpose }}</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -47,10 +54,16 @@ limitations under the License.
                                         {{ project.link[0].text }}
                                     </a>
                                 </td>
+                                <td>
+                                    {{ project.purposeTitle }}
+                                    <template v-if="project.purposeOther">
+                                        <br /><small>{{ project.purposeOther }}</small>
+                                    </template>
+                                </td>
                             </tr>
                         </template>
                         <tr v-else>
-                            <td colspan="2">
+                            <td colspan="3">
                                 {{ i18n.templates.app.noResults }}
                             </td>
                         </tr>
@@ -64,21 +77,46 @@ limitations under the License.
 <script>
     import linkify from 'linkify-it';
     import tlds from 'tlds';
+    import VueSelect from 'vue-select';
     import i18n from '../i18n';
     import data from '../../build/data';
 
     const Linkify = linkify();
     Linkify.tlds(tlds).set({ fuzzyIP: true, fuzzyEmail: false });
 
-    const projectData = data.map(project => ({ ...project, link: Linkify.match(project.link) }))
-        .filter(project => project.link !== null);
+    const purposeMap = {
+        fighting_virus: 'Fights the virus',
+        remote_learning: 'Enables remote learning and education',
+        quarantined_life: 'Supports quarantined life',
+        small_businesses: 'Helps small bussinesses impacted by the virus',
+        other: 'Other purposes',
+    };
+    const validPurposes = Object.keys(purposeMap);
+
+    const projectData = data.map(project => ({
+        ...project,
+        link: Linkify.match(project.link),
+        purpose: validPurposes.includes(project.purpose) ? project.purpose : 'other',
+        purposeTitle: purposeMap[validPurposes.includes(project.purpose) ? project.purpose : 'other'],
+        purposeOther: !validPurposes.includes(project.purpose) && ! project.purposeOther ? project.purpose : project.purposeOther,
+    })).filter(project => project.link !== null);
+
+    const filterPurposes = [
+        { label: 'All projects', value: 'all' },
+        ...validPurposes.map(purpose => ({ label: purposeMap[purpose], value: purpose })),
+    ];
 
     export default {
         name: 'App',
+        components: {
+            VueSelect,
+        },
         data() {
             return {
                 i18n,
                 filter: '',
+                purpose: filterPurposes[0].value,
+                purposes: filterPurposes,
             };
         },
         computed: {
@@ -88,11 +126,12 @@ limitations under the License.
         },
         methods: {
             filterProject(project) {
+                if (this.$data.purpose !== 'all' && this.$data.purpose !== project.purpose) return false;
                 if (this.$data.filter.trim() === '') return true;
 
                 const query = this.$data.filter.trim().toLowerCase();
                 if (project.name && project.name.toLowerCase().includes(query)) return true;
-                if (project.link && project.link.toLowerCase().includes(query)) return true;
+                if (project.link && project.link[0].text.toLowerCase().includes(query)) return true;
 
                 return false;
             },

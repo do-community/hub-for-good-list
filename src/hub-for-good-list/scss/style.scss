@@ -19,7 +19,43 @@ $header: #0071fe;
 
 .do-bulma {
   &.hub-for-good-list {
-    margin: 3rem 0 0;
+    @import "~vue-select/src/scss/vue-select";
+
+    margin: ($margin * 3) 0 0;
+
+    .vs--single {
+      flex-shrink: 0;
+      margin: 0 0 0 $margin;
+
+      &.vs--open {
+        .vs__selected {
+          position: relative;
+        }
+      }
+
+      &.vs--unsearchable {
+        .vs__search {
+          display: none;
+        }
+      }
+
+      .vs__dropdown-toggle {
+        background: $background;
+        border: 1px solid $input-border;
+        height: 50px;
+        padding: 0 ($margin * .25) 0 ($margin * .5);
+
+        .vs__selected {
+          margin: ($margin * .125) 0 0;
+          padding: 0 ($margin * .5);
+        }
+      }
+
+      .vs__dropdown-menu {
+        margin-bottom: -100%;
+        position: relative;
+      }
+    }
 
     .panel {
       margin: 0 0 1rem;
