@@ -24,7 +24,7 @@ limitations under the License.
                        v-model="filter"
                        class="input"
                        type="text"
-                       :placeholder="i18n.templates.app.search"
+                       :placeholder="i18n.templates.app.search.replace('Search', `Search ${total}`)"
                 />
                 <VueSelect v-model="purpose"
                            :options="purposes"
@@ -88,11 +88,14 @@ limitations under the License.
 
     // Purpose categories and their names
     const purposeMap = {
-        fighting_virus: 'Fights the virus',
-        remote_learning: 'Enables remote learning and education',
-        quarantined_life: 'Supports quarantined life',
-        small_businesses: 'Helps small businesses impacted by the virus',
-        other: 'Other purposes',
+        improve_health_and_education: i18n.templates.app.improveHealthAndEducation,
+        reduce_inequality: i18n.templates.app.reduceInequality,
+        spur_economic_growth: i18n.templates.app.spurEconomicGrowth,
+        fighting_virus: i18n.templates.app.fightingVirus,
+        remote_learning: i18n.templates.app.remoteLearning,
+        quarantined_life: i18n.templates.app.quarantinedLife,
+        small_businesses: i18n.templates.app.smallBusinesses,
+        other: i18n.templates.app.otherPurposes,
     };
     const validPurposes = Object.keys(purposeMap);
 
@@ -105,7 +108,7 @@ limitations under the License.
 
     // Create the data for the purposes filter
     const filterPurposes = [
-        { label: 'All projects', value: 'all' },
+        { label: i18n.templates.app.allProjects, value: 'all' },
         ...validPurposes.map(purpose => ({ label: purposeMap[purpose], value: purpose })),
     ];
 
@@ -121,6 +124,7 @@ limitations under the License.
                 purpose: filterPurposes[0].value,
                 purposes: filterPurposes,
                 purposeMap,
+                total: projectData.length.toLocaleString(),
             };
         },
         computed: {
