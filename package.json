@@ -9,7 +9,7 @@
     "build:template": "do-vue template",
     "build:data": "node ./src/build/get.js",
     "build:static": "copyfiles --up 2 ./src/static/{*,**/*} dist",
-    "build:tool": "do-vue tool src/hub-for-good-list dist",
+    "build:tool": "do-vue tool src/hub-for-good-list dist --scope-hoisting",
     "deploy:spaces:comment": "do-vue comment hub-for-good-list",
     "dev": "npm run dev:prep && npm run dev:parcel",
     "dev:parcel": "parcel ./src/hub-for-good-list/index.html --out-dir ./dev --port 8000",
