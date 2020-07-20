@@ -33,28 +33,28 @@
   },
   "homepage": "https://github.com/do-community/hub-for-good-list#readme",
   "dependencies": {
-    "@babel/runtime": "^7.10.2",
+    "@babel/runtime": "^7.10.5",
     "babel-eslint": "^10.1.0",
     "babel-polyfill": "^6.26.0",
     "do-bulma": "git+https://github.com/do-community/do-bulma.git",
     "do-vue": "git+https://github.com/do-community/do-vue.git",
     "google-spreadsheet": "^3.0.11",
-    "linkify-it": "^2.2.0",
+    "linkify-it": "^3.0.2",
     "parcel-bundler": "^1.12.4",
     "tlds": "^1.207.0",
     "vue": "^2.6.10",
     "vue-hot-reload-api": "^2.3.3",
-    "vue-select": "^3.10.3"
+    "vue-select": "^3.10.7"
   },
   "devDependencies": {
-    "@babel/plugin-transform-runtime": "^7.10.1",
+    "@babel/plugin-transform-runtime": "^7.10.5",
     "@vue/component-compiler-utils": "^3.1.2",
     "copyfiles": "^2.3.0",
-    "eslint": "^6.8.0",
-    "eslint-plugin-vue": "^5.2.3",
-    "posthtml": "^0.11.4",
+    "eslint": "^7.5.0",
+    "eslint-plugin-vue": "^6.2.2",
+    "posthtml": "^0.13.1",
     "posthtml-extend": "^0.3.0",
-    "sass": "^1.26.8",
+    "sass": "^1.26.10",
     "sass-lint": "^1.13.1",
     "vue-template-compiler": "^2.6.10"
   }
