@@ -24,7 +24,7 @@ limitations under the License.
                        v-model="filter"
                        class="input"
                        type="text"
-                       :placeholder="i18n.templates.app.search.replace('Search', `Search ${total}`)"
+                       :placeholder="i18n.templates.app.search"
                 />
                 <VueSelect v-model="purpose"
                            :options="purposes"
@@ -59,7 +59,7 @@ limitations under the License.
                                     </a>
                                 </td>
                                 <td class="purpose">
-                                    {{ purposeMap[project.purpose] }}
+                                    {{ purposeMap[project.purpose][0] }}
                                 </td>
                             </tr>
                         </template>
@@ -88,29 +88,44 @@ limitations under the License.
 
     // Purpose categories and their names
     const purposeMap = {
-        improve_health_and_education: i18n.templates.app.improveHealthAndEducation,
-        reduce_inequality: i18n.templates.app.reduceInequality,
-        spur_economic_growth: i18n.templates.app.spurEconomicGrowth,
-        fighting_virus: i18n.templates.app.fightingVirus,
-        remote_learning: i18n.templates.app.remoteLearning,
-        quarantined_life: i18n.templates.app.quarantinedLife,
-        small_businesses: i18n.templates.app.smallBusinesses,
-        other: i18n.templates.app.otherPurposes,
+        improve_health_and_education:   [i18n.templates.app.improveHealthAndEducation, 0],
+        reduce_inequality:              [i18n.templates.app.reduceInequality, 0],
+        spur_economic_growth:           [i18n.templates.app.spurEconomicGrowth, 0],
+        fighting_virus:                 [i18n.templates.app.fightingVirus, 0],
+        remote_learning:                [i18n.templates.app.remoteLearning, 0],
+        quarantined_life:               [i18n.templates.app.quarantinedLife, 0],
+        small_businesses:               [i18n.templates.app.smallBusinesses, 0],
+        other:                          [i18n.templates.app.otherPurposes, 0],
     };
     const validPurposes = Object.keys(purposeMap);
 
     // Parse links in project & standardise purposes
-    const projectData = data.map(project => ({
-        ...project,
-        link: Linkify.match(project.link),
-        purpose: validPurposes.includes(project.purpose) ? project.purpose : 'other',
-    })).filter(project => project.link !== null);
+    const projectData = data.map(project => {
+        const purpose = validPurposes.includes(project.purpose) ? project.purpose : 'other';
+        purposeMap[purpose][1]++;
+        return {
+            ...project,
+            link: Linkify.match(project.link),
+            purpose,
+        };
+    }).filter(project => project.link !== null);
 
     // Create the data for the purposes filter
-    const filterPurposes = [
-        { label: i18n.templates.app.allProjects, value: 'all' },
-        ...validPurposes.map(purpose => ({ label: purposeMap[purpose], value: purpose })),
-    ];
+    const getFilterPurposes = () => {
+        const nameValue = (name, value) => `${name} ${value > 0 ? `(${value.toLocaleString()})` : ''}`;
+
+        return [
+            {
+                label: nameValue(i18n.templates.app.allProjects, projectData.length),
+                value: 'all',
+            },
+            ...validPurposes.map(purpose => ({
+                label: nameValue(...purposeMap[purpose]),
+                value: purpose,
+            })),
+        ];
+    };
+    const initialFilterPurposes = getFilterPurposes();
 
     export default {
         name: 'App',
@@ -121,8 +136,8 @@ limitations under the License.
             return {
                 i18n,
                 filter: '',
-                purpose: filterPurposes[0].value,
-                purposes: filterPurposes,
+                purpose: initialFilterPurposes[0].value,
+                purposes: initialFilterPurposes,
                 purposeMap,
                 total: projectData.length.toLocaleString(),
             };
@@ -132,14 +147,26 @@ limitations under the License.
                 return projectData.filter(this.filterProject);
             },
         },
+        watch: {
+            filter() {
+                validPurposes.forEach(purpose => purposeMap[purpose][1] = 0);
+                projectData.forEach(project => this.filterQuery(project) && purposeMap[project.purpose][1]++);
+                this.$data.purposes = getFilterPurposes();
+            },
+        },
         methods: {
-            filterProject(project) {
-                if (this.$data.purpose !== 'all' && this.$data.purpose !== project.purpose) return false;
-                if (this.$data.filter.trim() === '') return true;
-
+            filterQuery(project) {
                 const query = this.$data.filter.trim().toLowerCase();
+
+                if (query === '') return true;
                 if (project.name && project.name.toLowerCase().includes(query)) return true;
                 if (project.link && project.link[0].text.toLowerCase().includes(query)) return true;
+
+                return false;
+            },
+            filterProject(project) {
+                if (this.$data.purpose !== 'all' && this.$data.purpose !== project.purpose) return false;
+                if (this.filterQuery(project)) return true;
 
                 return false;
             },

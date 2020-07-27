@@ -17,7 +17,7 @@ limitations under the License.
 export default {
     title: 'Hub for Good list',
     description: 'A list of all the public projects from DigitalOcean\'s Hub for Good.',
-    search: 'Search Hub for Good projects...',
+    search: 'Search the Hub for Good projects...',
     noResults: 'Sorry, no Hub for Good projects matched your search.',
     projectNameLink: 'Project name & link',
     projectPurpose: 'Project purpose',
