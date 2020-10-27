@@ -51,7 +51,7 @@
     "@vue/component-compiler-utils": "^3.2.0",
     "copyfiles": "^2.4.0",
     "eslint": "^7.12.1",
-    "eslint-plugin-vue": "^6.2.2",
+    "eslint-plugin-vue": "^7.1.0",
     "posthtml": "^0.13.4",
     "posthtml-extend": "^0.5.0",
     "sass": "^1.27.0",
