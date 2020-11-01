@@ -33,7 +33,7 @@
   },
   "homepage": "https://github.com/do-community/hub-for-good-list#readme",
   "dependencies": {
-    "@babel/runtime": "^7.11.2",
+    "@babel/runtime": "^7.12.1",
     "babel-eslint": "^10.1.0",
     "babel-polyfill": "^6.26.0",
     "do-bulma": "git+https://github.com/do-community/do-bulma.git",
@@ -41,20 +41,20 @@
     "google-spreadsheet": "^3.0.13",
     "linkify-it": "^3.0.2",
     "parcel-bundler": "^1.12.4",
-    "tlds": "^1.209.0",
+    "tlds": "^1.212.0",
     "vue": "^2.6.12",
     "vue-hot-reload-api": "^2.3.3",
     "vue-select": "^3.10.8"
   },
   "devDependencies": {
-    "@babel/plugin-transform-runtime": "^7.11.5",
+    "@babel/plugin-transform-runtime": "^7.12.1",
     "@vue/component-compiler-utils": "^3.2.0",
-    "copyfiles": "^2.3.0",
-    "eslint": "^7.8.1",
-    "eslint-plugin-vue": "^6.2.2",
-    "posthtml": "^0.13.3",
+    "copyfiles": "^2.4.0",
+    "eslint": "^7.12.1",
+    "eslint-plugin-vue": "^7.1.0",
+    "posthtml": "^0.13.4",
     "posthtml-extend": "^0.5.0",
-    "sass": "^1.26.10",
+    "sass": "^1.27.0",
     "sass-lint": "^1.13.1",
     "vue-template-compiler": "^2.6.12"
   }
