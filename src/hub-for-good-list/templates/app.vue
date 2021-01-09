@@ -101,14 +101,17 @@ limitations under the License.
 
     // Parse links in project & standardise purposes
     const projectData = data.map(project => {
+        const link = Linkify.match(project.link);
+        if (link === null) return null;
+
         const purpose = validPurposes.includes(project.purpose) ? project.purpose : 'other';
         purposeMap[purpose][1]++;
         return {
             ...project,
-            link: Linkify.match(project.link),
+            link,
             purpose,
         };
-    }).filter(project => project.link !== null);
+    }).filter(project => project !== null);
 
     // Create the data for the purposes filter
     const getFilterPurposes = () => {
