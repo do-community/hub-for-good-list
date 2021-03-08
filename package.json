@@ -36,7 +36,7 @@
     "@babel/runtime": "^7.12.1",
     "babel-eslint": "^10.1.0",
     "do-bulma": "github:do-community/do-bulma.git",
-    "do-vue": "git+https://github.com/do-community/do-vue.git#869ac289fb02195a90ee70402ed97bd3a008905b",
+    "do-vue": "git+https://github.com/do-community/do-vue.git#7ba6df2241e36635a6137b873620f026ba45fe93",
     "google-spreadsheet": "^3.0.13",
     "linkify-it": "^3.0.2",
     "tlds": "^1.212.0",
