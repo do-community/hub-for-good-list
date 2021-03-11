@@ -12,7 +12,7 @@
     "build:tool": "do-vue tool src/hub-for-good-list dist",
     "deploy:spaces:comment": "do-vue comment hub-for-good-list",
     "dev": "npm run dev:prep && npm run dev:do-vue",
-    "dev:do-vue": "do-vue dev ./src/hub-for-good-list/index.html ./dev 8000",
+    "dev:do-vue": "do-vue dev ./src/hub-for-good-list ./dev 8000",
     "dev:prep": "npm run build:template && npm run build:data && npm run dev:static",
     "dev:static": "copyfiles --up 2 ./src/static/{*,**/*} dev",
     "test": "npm run test:eslint && npm run test:scss",
