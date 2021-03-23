@@ -1,5 +1,5 @@
 /*
-Copyright 2020 DigitalOcean
+Copyright 2021 DigitalOcean
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -15,10 +15,10 @@ limitations under the License.
 */
 
 export default {
-    title: 'Hub for Good list',
-    description: 'A list of all the public projects from DigitalOcean\'s Hub for Good.',
-    search: 'Search the Hub for Good projects...',
-    noResults: 'Sorry, no Hub for Good projects matched your search.',
+    title: 'Hollie\'s Hub for Good projects list',
+    description: 'A collection of projects making an impact with Hollie\'s Hub for Good.',
+    search: 'Search Hollie\'s Hub for Good projects...',
+    noResults: 'Sorry, no Hollie\'s Hub for Good projects matched your search.',
     projectNameLink: 'Project name & link',
     projectPurpose: 'Project purpose',
     improveHealthAndEducation: 'Improves health and education',
