@@ -1,6 +1,6 @@
-# Hub for Good list
+# Hollie's Hub for Good projects list
 
-A list of all the public projects from DigitalOcean's Hub for Good.
+A collection of projects making an impact with Hollie's Hub for Good.
 
 ---
 
