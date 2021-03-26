@@ -35,7 +35,7 @@
   "dependencies": {
     "@babel/runtime": "^7.12.1",
     "babel-eslint": "^10.1.0",
-    "do-bulma": "github:do-community/do-bulma.git",
+    "do-bulma": "git+https://github.com/do-community/do-bulma.git",
     "do-vue": "git+https://github.com/do-community/do-vue.git",
     "google-spreadsheet": "^3.0.13",
     "linkify-it": "^3.0.2",
