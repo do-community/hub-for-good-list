@@ -33,23 +33,23 @@
   },
   "homepage": "https://github.com/do-community/hub-for-good-list#readme",
   "dependencies": {
-    "@babel/runtime": "^7.13.10",
+    "@babel/runtime": "^7.13.16",
     "babel-eslint": "^10.1.0",
     "do-bulma": "git+https://github.com/do-community/do-bulma.git",
     "do-vue": "git+https://github.com/do-community/do-vue.git",
     "google-spreadsheet": "^3.1.15",
     "linkify-it": "^3.0.2",
-    "tlds": "^1.219.0",
+    "tlds": "^1.220.0",
     "vue": "^2.6.12",
     "vue-select": "^3.11.2"
   },
   "devDependencies": {
     "copyfiles": "^2.4.1",
-    "eslint": "^7.23.0",
-    "eslint-plugin-vue": "^7.8.0",
-    "posthtml": "^0.15.1",
+    "eslint": "^7.24.0",
+    "eslint-plugin-vue": "^7.9.0",
+    "posthtml": "^0.15.2",
     "posthtml-extend": "^0.5.2",
-    "sass": "^1.32.8",
+    "sass": "^1.32.11",
     "sass-lint": "git+https://github.com/do-community/sass-lint.git",
     "vue-template-compiler": "^2.6.12"
   }
