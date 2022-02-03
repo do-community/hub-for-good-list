@@ -1,5 +1,5 @@
 <!--
-Copyright 2020 DigitalOcean
+Copyright 2022 DigitalOcean
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -20,17 +20,19 @@ limitations under the License.
             <div class="input-container">
                 <label for="input_search" class="hidden">{{ i18n.templates.app.search }}</label>
                 <i class="fas fa-search"></i>
-                <input id="input_search"
-                       v-model="filter"
-                       class="input"
-                       type="text"
-                       :placeholder="i18n.templates.app.search"
+                <input
+                    id="input_search"
+                    v-model="filter"
+                    class="input"
+                    type="text"
+                    :placeholder="i18n.templates.app.search"
                 />
-                <VueSelect v-model="purpose"
-                           :options="purposes"
-                           :reduce="purp => purp.value"
-                           :clearable="false"
-                           :searchable="false"
+                <VueSelect
+                    v-model="purpose"
+                    :options="purposes"
+                    :reduce="purp => purp.value"
+                    :clearable="false"
+                    :searchable="false"
                 />
             </div>
         </form>

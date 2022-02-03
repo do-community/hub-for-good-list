@@ -1,5 +1,5 @@
 /*
-Copyright 2020 DigitalOcean
+Copyright 2022 DigitalOcean
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -15,6 +15,7 @@ limitations under the License.
 */
 
 $header: #0071fe;
+
 @import "~do-bulma/src/style";
 
 .do-bulma {
@@ -26,39 +27,39 @@ $header: #0071fe;
     form {
       .input-container {
         .v-select {
-          &.vs--single {
-            &.vs--unsearchable {
+          &.vs--single { // stylelint-disable-line selector-class-pattern
+            &.vs--unsearchable { // stylelint-disable-line selector-class-pattern
               flex-shrink: 0;
               margin: 0 0 0 $margin;
 
-              &.vs--open {
-                .vs__selected {
+              &.vs--open { // stylelint-disable-line selector-class-pattern
+                .vs__selected { // stylelint-disable-line selector-class-pattern
                   position: relative;
                 }
               }
 
-              .vs__search {
+              .vs__search { // stylelint-disable-line selector-class-pattern
                 display: none;
               }
 
-              .vs__dropdown-toggle {
+              .vs__dropdown-toggle { // stylelint-disable-line selector-class-pattern
                 background: $background;
                 border: 1px solid $input-border;
                 height: 50px;
                 padding: 0 ($margin * .25) 0 ($margin * .5);
 
-                .vs__selected {
+                .vs__selected { // stylelint-disable-line selector-class-pattern
                   margin: ($margin * .125) 0 0;
                   padding: 0 ($margin * .5);
                 }
               }
 
-              .vs__dropdown-menu {
+              .vs__dropdown-menu { // stylelint-disable-line selector-class-pattern
                 margin: 0 0 -100%;
                 padding: 0;
                 position: relative;
 
-                .vs__dropdown-option--highlight {
+                .vs__dropdown-option--highlight { // stylelint-disable-line selector-class-pattern
                   background: $primary;
                 }
               }

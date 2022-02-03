@@ -9,8 +9,8 @@ module.exports = {
   ],
   parserOptions: {
     ecmaVersion: 2019,
-    sourceType: 'module',
-    parser: "babel-eslint"
+    parser: '@babel/eslint-parser',
+    requireConfigFile: false,
   },
   rules: {
     'linebreak-style': ['error', 'unix'],
