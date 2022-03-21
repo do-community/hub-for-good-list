@@ -1,5 +1,5 @@
 /*
-Copyright 2020 DigitalOcean
+Copyright 2022 DigitalOcean
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -16,14 +16,12 @@ limitations under the License.
 
 import './scss/style';
 
-import Vue from 'vue';
+import { createApp } from 'vue';
 import App from './templates/app.vue';
 import i18n from './i18n';
 
 document.head.title = i18n.templates.app.title;
 
 document.querySelectorAll('[data-hub-for-good-list]').forEach(elm => {
-    new Vue({
-        render: h => h(App),
-    }).$mount(elm);
+    createApp(App).mount(elm);
 });
