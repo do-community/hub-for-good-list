@@ -34,8 +34,8 @@
   "homepage": "https://github.com/do-community/hub-for-good-list#readme",
   "dependencies": {
     "@babel/runtime": "^7.17.2",
-    "do-bulma": "git+https://github.com/do-community/do-bulma.git#MattIPv4/vue-3",
-    "do-vue": "git+https://github.com/do-community/do-vue.git#MattIPv4/vue-3",
+    "do-bulma": "git+https://github.com/do-community/do-bulma.git",
+    "do-vue": "git+https://github.com/do-community/do-vue.git",
     "google-spreadsheet": "^3.2.0",
     "linkify-it": "^3.0.3",
     "tlds": "^1.230.0",
