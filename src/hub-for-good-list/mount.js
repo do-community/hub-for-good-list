@@ -14,14 +14,15 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-import './scss/style';
-
+// Load in the app
+import './scss/style.scss';
+import 'vue-select/dist/vue-select.css';
 import { createApp } from 'vue';
 import App from './templates/app.vue';
 import i18n from './i18n';
 
+// Mount the app
 document.head.title = i18n.templates.app.title;
-
 document.querySelectorAll('[data-hub-for-good-list]').forEach(elm => {
     createApp(App).mount(elm);
 });

@@ -20,8 +20,6 @@ $header: #0071fe;
 
 .do-bulma {
   &.hub-for-good-list {
-    @import "~vue-select/src/scss/vue-select";
-
     margin: ($margin * 3) 0 0;
 
     form {
@@ -58,6 +56,10 @@ $header: #0071fe;
                 margin: 0 0 -100%;
                 padding: 0;
                 position: relative;
+
+                .vs__dropdown-option { // stylelint-disable-line selector-class-pattern
+                  padding: ($margin * .25) ($margin * 1.25);
+                }
 
                 .vs__dropdown-option--highlight { // stylelint-disable-line selector-class-pattern
                   background: $primary;
