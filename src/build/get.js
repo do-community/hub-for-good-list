@@ -1,5 +1,5 @@
 /*
-Copyright 2020 DigitalOcean
+Copyright 2022 DigitalOcean
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -19,6 +19,11 @@ const path = require('path');
 const { GoogleSpreadsheet } = require('google-spreadsheet');
 
 const main = async () => {
+    if (process.env.STUB_PROJECT_DATA === 'true') {
+        await fs.promises.writeFile(path.join(__dirname, 'data.json'), JSON.stringify([]));
+        return;
+    }
+
     // Load our config from env or file
     let clientEmail = process.env.GOOGLE_CLIENT_EMAIL;
     let privateKey = process.env.GOOGLE_PRIVATE_KEY;
@@ -57,6 +62,9 @@ const main = async () => {
     await fs.promises.writeFile(path.join(__dirname, 'data.json'), JSON.stringify(sanitised));
 };
 
-main();
+main().catch(err => {
+    console.error(err);
+    process.exit(1);
+});
 
 
