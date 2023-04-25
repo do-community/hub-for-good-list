@@ -35,7 +35,7 @@
   "dependencies": {
     "@babel/runtime": "^7.20.1",
     "do-bulma": "github:do-community/do-bulma",
-    "do-vue": "github:do-community/do-vue",
+    "do-vue": "github:do-community/do-vue#MattIPv4/update-dependencies",
     "google-spreadsheet": "^3.3.0",
     "linkify-it": "^4.0.1",
     "tlds": "^1.233.0",
