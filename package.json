@@ -33,32 +33,32 @@
   },
   "homepage": "https://github.com/do-community/hub-for-good-list#readme",
   "dependencies": {
-    "@babel/runtime": "^7.20.1",
+    "@babel/runtime": "^7.21.0",
     "do-bulma": "github:do-community/do-bulma",
     "do-vue": "github:do-community/do-vue",
     "google-spreadsheet": "^3.3.0",
     "linkify-it": "^4.0.1",
-    "tlds": "^1.233.0",
-    "vue": "^3.2.45",
+    "tlds": "^1.238.0",
+    "vue": "^3.2.47",
     "vue-select": "^4.0.0-beta.6"
   },
   "devDependencies": {
-    "@babel/eslint-parser": "^7.19.1",
+    "@babel/eslint-parser": "^7.21.3",
     "copyfiles": "^2.4.1",
-    "eslint": "^8.28.0",
-    "eslint-plugin-vue": "^9.7.0",
+    "eslint": "^8.39.0",
+    "eslint-plugin-vue": "^9.11.0",
     "posthtml": "^0.16.6",
-    "posthtml-extend": "^0.6.3",
-    "sass": "^1.56.1",
-    "stylelint": "^14.15.0",
-    "stylelint-config-standard-scss": "^6.1.0",
-    "stylelint-order": "^5.0.0",
+    "posthtml-extend": "^0.6.5",
+    "sass": "^1.62.0",
+    "stylelint": "^15.6.0",
+    "stylelint-config-standard-scss": "^9.0.0",
+    "stylelint-order": "^6.0.3",
     "vue-template-compiler": "^2.7.14"
   },
   "overrides": {
     "do-vue": {
       "pretty-checkbox-vue": {
-        "vue": "$vue"
+        "vue": "^3.0.0"
       }
     }
   }
