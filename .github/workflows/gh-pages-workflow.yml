@@ -6,6 +6,7 @@ on:
       - master
   schedule:
     - cron: '0 12,15,18,21 * * *'
+  workflow_dispatch:
 
 permissions:
   contents: write
@@ -37,6 +38,9 @@ jobs:
         GOOGLE_CLIENT_EMAIL: ${{ secrets.GOOGLE_CLIENT_EMAIL }}
         GOOGLE_PRIVATE_KEY: ${{ secrets.GOOGLE_PRIVATE_KEY }}v
         GOOGLE_SHEET_ID: ${{ secrets.GOOGLE_SHEET_ID }}
+
+    - name: Clean build output
+      run: rm dist/report.html
 
     - name: Deploy master to GitHub Pages
       uses: JamesIves/github-pages-deploy-action@v4
