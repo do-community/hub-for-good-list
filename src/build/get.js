@@ -1,5 +1,5 @@
 /*
-Copyright 2022 DigitalOcean
+Copyright 2023 DigitalOcean
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -16,6 +16,7 @@ limitations under the License.
 
 const fs = require('fs');
 const path = require('path');
+const { JWT } = require('google-auth-library');
 const { GoogleSpreadsheet } = require('google-spreadsheet');
 
 const main = async () => {
@@ -33,11 +34,12 @@ const main = async () => {
     }
 
     // Connect to the document
-    const doc = new GoogleSpreadsheet(sheetId);
-    await doc.useServiceAccountAuth({
-        client_email: clientEmail,
-        private_key: privateKey,
+    const auth = new JWT({
+        email: clientEmail,
+        key: privateKey,
+        scopes: [ 'https://www.googleapis.com/auth/spreadsheets' ],
     });
+    const doc = new GoogleSpreadsheet(sheetId, auth);
     await doc.loadInfo();
 
     // Get the approval sheet
@@ -45,17 +47,18 @@ const main = async () => {
     const rows = await sheet.getRows();
 
     // Get the rows that are public & approved
-    const approved = rows.filter(row =>
-        row.is_public && row.status
-        && (row.is_public.toLowerCase().trim() === '["yes"]' || row.is_public.toLowerCase().trim() === 'yes')
-        && row.status.toLowerCase().trim() === 'approved');
+    const approved = rows.filter(row => {
+        const is_public = row.get('is_public')?.toLowerCase()?.trim();
+        const status = row.get('status')?.toLowerCase()?.trim();
+        return (is_public === 'yes' || is_public === '["yes"]') && status === 'approved';
+    });
 
     // Only keep the columns we need
     const sanitised = approved.map(row => ({
         id: row.rowNumber,
-        name: row.project_name || '',
-        link: row.project_link || '',
-        purpose: row.project_purpose || '',
+        name: row.get('project_name') || '',
+        link: row.get('project_link') || '',
+        purpose: row.get('project_purpose') || '',
     }));
 
     // Export the data
@@ -66,5 +69,3 @@ main().catch(err => {
     console.error(err);
     process.exit(1);
 });
-
-
