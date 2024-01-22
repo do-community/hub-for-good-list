@@ -40,9 +40,9 @@
     "@babel/runtime": "^7.23.8",
     "do-bulma": "github:do-community/do-bulma#MattIPv4/update-dependencies",
     "do-vue": "github:do-community/do-vue#MattIPv4/update-dependencies",
-    "google-auth-library": "^8.9.0",
+    "google-auth-library": "^9.4.2",
     "google-spreadsheet": "^4.1.1",
-    "linkify-it": "^4.0.1",
+    "linkify-it": "^5.0.0",
     "tlds": "^1.248.0",
     "vue": "^3.4.15",
     "vue-select": "^4.0.0-beta.6"
@@ -55,8 +55,8 @@
     "posthtml": "^0.16.6",
     "posthtml-extend": "^0.6.5",
     "sass": "^1.70.0",
-    "stylelint": "^15.11.0",
-    "stylelint-config-standard-scss": "^10.0.0",
+    "stylelint": "^16.2.0",
+    "stylelint-config-standard-scss": "^13.0.0",
     "stylelint-order": "^6.0.4",
     "vue-template-compiler": "^2.7.16"
   },
