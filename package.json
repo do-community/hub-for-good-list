@@ -38,8 +38,8 @@
   "homepage": "https://github.com/do-community/hub-for-good-list#readme",
   "dependencies": {
     "@babel/runtime": "^7.23.8",
-    "do-bulma": "github:do-community/do-bulma#MattIPv4/update-dependencies",
-    "do-vue": "github:do-community/do-vue#MattIPv4/update-dependencies",
+    "do-bulma": "github:do-community/do-bulma",
+    "do-vue": "github:do-community/do-vue",
     "google-auth-library": "^9.4.2",
     "google-spreadsheet": "^4.1.1",
     "linkify-it": "^5.0.0",
